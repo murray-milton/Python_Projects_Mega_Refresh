@@ -146,7 +146,7 @@ MIT — see [LICENSE](LICENSE)
 
 ## 👋 Contact
 
-**Murray Milton** — [murray-milton](https://github.com/murray-milton) — [murraylmilton@outlook.com](mailto:murraylmilton@outlook.com)
+**Murray Milton** — [murray-milton](https://github.com/murray-milton) — [murraylmilton@outlook.com](mailto:miltonmln357@gmail.com.com)
 
 ---
 
