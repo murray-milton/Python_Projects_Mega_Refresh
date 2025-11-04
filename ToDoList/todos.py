@@ -41,7 +41,7 @@ def main() -> None:
         else:
             print("Invalid choice. Ending program.")
             break
-        # Ask if the user wants to continue
+        # Controls the users adding of more TODOs
         user_choice = input("Add another? (y/n): ").lower().strip()
 
         # Decide whether to continue or exit
