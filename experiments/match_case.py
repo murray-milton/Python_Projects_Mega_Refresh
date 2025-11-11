@@ -5,7 +5,7 @@ greeting = "Welcome to the to do app!"
 print(greeting.upper())
 while True:
     user_action = (
-        input("Enter your action (add, show, delete, or quit): ").strip().lower()
+        input("Enter your action (add, show, delete, edit,  or quit): ").strip().lower()
     )
 
     match user_action:
@@ -19,6 +19,10 @@ while True:
         case "delete":
             delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3")
             del todos[int(delete_todo) - 1]
+        case "edit":
+            edit_todos = input("Enter the todo you want to edit: e.g: 1, 2, 3")
+            new_todo = input("Enter your new todo: ")
+            todos[int(edit_todos) - 1] = new_todo
         case "quit":
             break
         case _:
