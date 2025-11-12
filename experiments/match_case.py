@@ -1,4 +1,4 @@
-""" Using a simple match case logic"""
+""" Todo CLI that enable the user to add, show, delete, edit, and quit."""
 
 todos = []
 greeting = "Welcome to the to do app!"
