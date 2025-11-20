@@ -9,7 +9,7 @@ Description:
 
 """Todo CLI that enable the user to add, show, delete, edit, and quit."""
 
-todos = []
+# todos = []
 greeting = "Welcome to the to do app!"
 print(greeting.upper())
 while True:
@@ -21,8 +21,16 @@ while True:
 
     match user_action:
         case "add":
-            todo = input("Enter a todo: ")
+            todo = input("Enter a todo: ") + "\n"
+
+            file = open("todos.txt", "r")
+            todos = file.readlines()  # Creates a list of strings
+
             todos.append(todo)
+
+            file = open("todos.txt", "w")
+            file.writelines(todos)
+            file.close()
         case "show" | "display" | "list":
             for index, todo in enumerate(todos):
                 todo = todo.title()

@@ -1,0 +1,6 @@
+Study DSA using Python as main language
+Review main concepts in ML
+Learn how to build transformers
+Review main theory on compliers
+Send out applications
+Finalize portfolio project
