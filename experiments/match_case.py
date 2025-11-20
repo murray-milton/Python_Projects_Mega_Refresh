@@ -1,4 +1,4 @@
-""" Todo CLI that enable the user to add, show, delete, edit, and quit."""
+"""Todo CLI that enable the user to add, show, delete, edit, and quit."""
 
 todos = []
 greeting = "Welcome to the to do app!"
@@ -13,9 +13,9 @@ while True:
             todo = input("Enter a todo: ")
             todos.append(todo)
         case "show" | "display" | "list":
-            for todo in todos:
+            for index, todo in enumerate(todos):
                 todo = todo.title()
-                print(todo)
+                print(f"{ index + 1}.{todo}")
         case "delete":
             delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3")
             del todos[int(delete_todo) - 1]
