@@ -5,7 +5,9 @@ greeting = "Welcome to the to do app!"
 print(greeting.upper())
 while True:
     user_action = (
-        input("Enter your action (add, show, delete, edit,  or quit): ").strip().lower()
+        input("Enter your action (add, show, delete, edit, complete  or quit): ")
+        .strip()
+        .lower()
     )
 
     match user_action:
@@ -23,6 +25,9 @@ while True:
             edit_todos = input("Enter the todo you want to edit: e.g: 1, 2, 3")
             new_todo = input("Enter your new todo: ")
             todos[int(edit_todos) - 1] = new_todo
+        case "complete":
+            completed_todo = input("Which todo do you want to mark as completed?")
+            del todos[int(completed_todo) - 1]
         case "quit":
             break
         case _:
