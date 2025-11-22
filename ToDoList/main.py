@@ -25,6 +25,7 @@ while True:
 
             file = open("todos.txt", "r")
             todos = file.readlines()  # Creates a list of strings
+            file.close()
 
             todos.append(todo)
 
