@@ -4,3 +4,4 @@ Learn how to build transformers
 Review main theory on compliers
 Send out applications
 Finalize portfolio project
+Study for Coding Challenge

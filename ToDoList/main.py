@@ -33,6 +33,8 @@ while True:
             file.writelines(todos)
             file.close()
         case "show" | "display" | "list":
+            file = open("todos.txt", "r")
+            todos = file.readlines()
             for index, todo in enumerate(todos):
                 todo = todo.title()
                 print(f"{ index + 1}.{todo}")
