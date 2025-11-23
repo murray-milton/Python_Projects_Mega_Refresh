@@ -9,7 +9,6 @@ Description:
 
 """Todo CLI that enable the user to add, show, delete, edit, and quit."""
 
-# todos = []
 greeting = "Welcome to the to do app!"
 print(greeting.upper())
 while True:
@@ -35,6 +34,8 @@ while True:
         case "show" | "display" | "list":
             file = open("todos.txt", "r")
             todos = file.readlines()
+            file.close()
+
             for index, todo in enumerate(todos):
                 todo = todo.title()
                 print(f"{ index + 1}.{todo}")
