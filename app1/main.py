@@ -22,17 +22,17 @@ while True:
         case "add":
             todo = input("Enter a todo: ") + "\n"
 
-            file = open("todos.txt", "r")
+            file = open("files/todos.txt", "r")
             todos = file.readlines()  # Creates a list of strings
             file.close()
 
             todos.append(todo)
 
-            file = open("todos.txt", "w")
+            file = open("files/todos.txt", "w")
             file.writelines(todos)
             file.close()
         case "show" | "display" | "list":
-            file = open("todos.txt", "r")
+            file = open("files/todos.txt", "r")
             todos = file.readlines()
             file.close()
 
