@@ -1,3 +1,6 @@
+import sys
+import time
+
 """
 Purpose: Simple command-line TODO list refresher
 Description:
@@ -119,3 +122,50 @@ print("Thanks for using the to do app!")
 #     main()
 # Developer Notes:
 # API JSON Token Grabs
+
+
+STORED_USERNAME: str = "mission_admin"
+STORED_PASSWORD: str = "Apollo@2025"  # Demo only – would be hashed in production
+
+MAX_ATTEMPTS: int = 3
+LOCKOUT_SECONDS: int = 10
+
+
+def mission_admin_login_secure() -> None:
+    """
+    Secure login that limits authentication attempts and adds delay
+    to reduce brute-force risk.
+    """
+    print("=== Secure Mission Admin Login (Attempts Limited) ===")
+    failed_attempts: int = 0
+
+    while failed_attempts < MAX_ATTEMPTS:
+        username: str = input("Username: ").strip()
+        password: str = input("Password: ").strip()
+
+        if username == STORED_USERNAME and password == STORED_PASSWORD:
+            print("Access granted – welcome to Mission Control.")
+            return
+
+        failed_attempts += 1
+        remaining: int = MAX_ATTEMPTS - failed_attempts
+        print(f"Invalid credentials. Attempts remaining: {remaining}")
+
+        # Small delay slows scripted brute-force attacks
+        time.sleep(2)
+
+    print(
+        f"\nToo many failed attempts. Account is temporarily locked "
+        f"for {LOCKOUT_SECONDS} seconds."
+    )
+    time.sleep(LOCKOUT_SECONDS)
+    sys.exit("Program exiting – please contact support or try again later.")
+
+
+def main() -> None:
+    """Main entry point for the secure login demo."""
+    mission_admin_login_secure()
+
+
+if __name__ == "__main__":
+    main()
