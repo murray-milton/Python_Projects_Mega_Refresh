@@ -22,9 +22,9 @@ while True:
         case "add":
             todo = input("Enter a todo: ") + "\n"
 
-            file = open("files/todos.txt", "r")
-            todos = file.readlines()  # Creates a list of strings
-            file.close()
+            # Modified code using context
+            with open("files/todos.txt", "r") as file:
+                todos = file.readlines()
 
             todos.append(todo)
 
