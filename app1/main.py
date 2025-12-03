@@ -36,16 +36,16 @@ while True:
             todos = file.readlines()
             file.close()
 
-            new_todos = []
+            # new_todos = []
 
-            for item in todos:
-                new_item = item.strip("\n")
-                new_todos.append(new_item)
+            # for item in todos:
+            #     new_item = item.strip("\n")
+            #     new_todos.append(new_item)
 
-            new_todos = [item.strip("\n") for item in todos]
-            for index, todo in enumerate(new_todos):
-                todo = todo.title()
-                print(f"{ index + 1}.{todo}")
+            # new_todos = [item.strip("\n") for item in todos]
+            for index, todo in enumerate(todos):
+                item = todo.strip("\n")
+                print(f"{ index + 1}.{item.title()}")
         case "delete":
             delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3")
             del todos[int(delete_todo) - 1]
