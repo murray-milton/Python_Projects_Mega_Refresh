@@ -69,7 +69,6 @@ while True:
                 todos = file.readlines()
 
             removed_todo = todos[completed_todo - 1]
-            # del todos[int(completed_todo) - 1
             todos.pop(completed_todo - 1)
 
             with open("files/todos.txt", "w") as file:
