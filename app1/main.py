@@ -28,34 +28,50 @@ while True:
 
             todos.append(todo)
 
-            file = open("files/todos.txt", "w")
-            file.writelines(todos)
-            file.close()
+            with open("files/todos.txt", "w") as file:
+                file.writelines(todos)
+
         case "show" | "display" | "list":
-            file = open("files/todos.txt", "r")
-            todos = file.readlines()
-            file.close()
-
-            # new_todos = []
-
-            # for item in todos:
-            #     new_item = item.strip("\n")
-            #     new_todos.append(new_item)
-
-            # new_todos = [item.strip("\n") for item in todos]
+            with open("files/todos.txt", "r") as file:
+                todos = file.readlines()
             for index, todo in enumerate(todos):
                 item = todo.strip("\n")
                 print(f"{ index + 1}.{item.title()}")
         case "delete":
             delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3")
+
+            with open("files/todos.txt", "r") as file:
+                todos = file.readlines()
+
             del todos[int(delete_todo) - 1]
+
+            with open("files/todos.txt", "w") as file:
+                file.writelines(todos)
+
         case "edit":
             edit_todos = input("Enter the todo you want to edit: e.g: 1, 2, 3")
+
+            with open("files/todos.txt", "r") as file:
+                todos = file.readlines()
+
             new_todo = input("Enter your new todo: ")
-            todos[int(edit_todos) - 1] = new_todo
+            todos[int(edit_todos) - 1] = new_todo + "\n"
+
+            with open("files/todos.txt", "w") as file:
+                file.writelines(todos)
+
         case "complete":
-            completed_todo = input("Which todo do you want to mark as completed?")
-            del todos[int(completed_todo) - 1]
+            completed_todo = int(input("Which todo do you want to mark as completed?"))
+
+            with open("files/todos.txt", "r") as file:
+                todos = file.readlines()
+
+            # del todos[int(completed_todo) - 1
+            todos.pop(completed_todo - 1)
+
+            with open("files/todos.txt", "w") as file:
+                file.writelines(todos)
+
         case "quit":
             break
         case _:
