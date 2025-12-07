@@ -11,3 +11,9 @@ with open(f"../journal/{date}.txt", "x") as file:
     for i, item in enumerate(journal):
         user_input = f"{i + 1}. {item}"
         file.write(user_input + "\n")
+
+languages = ["English", "German", "Spanish"]
+
+for language in languages:
+    with open(f"../journal/{language}.txt", "x") as file:
+        file.write(language)
