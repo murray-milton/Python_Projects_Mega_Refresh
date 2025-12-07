@@ -38,7 +38,7 @@ while True:
                 item = todo.strip("\n")
                 print(f"{ index + 1}.{item.title()}")
         case "delete":
-            delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3")
+            delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3: ")
 
             with open("files/todos.txt", "r") as file:
                 todos = file.readlines()
@@ -49,7 +49,7 @@ while True:
                 file.writelines(todos)
 
         case "edit":
-            edit_todos = input("Enter the todo you want to edit: e.g: 1, 2, 3")
+            edit_todos = input("Enter the todo you want to edit: e.g: 1, 2, 3: ")
 
             with open("files/todos.txt", "r") as file:
                 todos = file.readlines()
@@ -61,16 +61,23 @@ while True:
                 file.writelines(todos)
 
         case "complete":
-            completed_todo = int(input("Which todo do you want to mark as completed?"))
+            completed_todo = int(
+                input("Which todo do you want to mark as completed? e.g: 1, 2, 3: ")
+            )
 
             with open("files/todos.txt", "r") as file:
                 todos = file.readlines()
 
+            removed_todo = todos[completed_todo - 1]
             # del todos[int(completed_todo) - 1
             todos.pop(completed_todo - 1)
 
             with open("files/todos.txt", "w") as file:
                 file.writelines(todos)
+
+            print(
+                f"The following todo has been marked as completed: {removed_todo.strip('\n')}"
+            )
 
         case "quit":
             break
