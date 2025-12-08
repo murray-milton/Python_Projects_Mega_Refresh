@@ -18,127 +18,69 @@ while True:
         .lower()
     )
 
-    match user_action:
-        case "add":
-            todo = input("Enter a todo: ") + "\n"
+    if "add" in user_action:
+        # todo = input("Enter a todo: ") + "\n"
+        todo = user_action[4:].title() + "\n"
 
-            # Modified code using context
-            with open("files/todos.txt", "r") as file:
-                todos = file.readlines()
+        with open("files/todos.txt", "r") as file:
+            todos = file.readlines()
 
-            todos.append(todo)
+        todos.append(todo)
 
-            with open("files/todos.txt", "w") as file:
-                file.writelines(todos)
+        with open("files/todos.txt", "w") as file:
+            file.writelines(todos)
 
-        case "show" | "display" | "list":
-            with open("files/todos.txt", "r") as file:
-                todos = file.readlines()
-            for index, todo in enumerate(todos):
-                item = todo.strip("\n")
-                print(f"{ index + 1}.{item.title()}")
-        case "delete":
-            delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3: ")
+    elif "show" in user_action:
 
-            with open("files/todos.txt", "r") as file:
-                todos = file.readlines()
+        with open("files/todos.txt", "r") as file:
+            todos = file.readlines()
 
-            del todos[int(delete_todo) - 1]
+        for index, todo in enumerate(todos):
+            item = todo.strip("\n")
+            print(f"{ index + 1}.{item.title()}")
 
-            with open("files/todos.txt", "w") as file:
-                file.writelines(todos)
+    elif "delete" in user_action:
+        delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3: ")
 
-        case "edit":
-            edit_todos = input("Enter the todo you want to edit: e.g: 1, 2, 3: ")
+        with open("files/todos.txt", "r") as file:
+            todos = file.readlines()
 
-            with open("files/todos.txt", "r") as file:
-                todos = file.readlines()
+        del todos[int(delete_todo) - 1]
 
-            new_todo = input("Enter your new todo: ")
-            todos[int(edit_todos) - 1] = new_todo + "\n"
+        with open("files/todos.txt", "w") as file:
+            file.writelines(todos)
 
-            with open("files/todos.txt", "w") as file:
-                file.writelines(todos)
+    elif "edit" in user_action:
+        edit_todos = input("Enter the todo you want to edit: e.g: 1, 2, 3: ")
 
-        case "complete":
-            completed_todo = int(
-                input("Which todo do you want to mark as completed? e.g: 1, 2, 3: ")
-            )
+        with open("files/todos.txt", "r") as file:
+            todos = file.readlines()
 
-            with open("files/todos.txt", "r") as file:
-                todos = file.readlines()
+        new_todo = input("Enter your new todo: ")
+        todos[int(edit_todos) - 1] = new_todo + "\n"
 
-            removed_todo = todos[completed_todo - 1]
-            todos.pop(completed_todo - 1)
+        with open("files/todos.txt", "w") as file:
+            file.writelines(todos)
 
-            with open("files/todos.txt", "w") as file:
-                file.writelines(todos)
+    elif "complete" in user_action:
+        completed_todo = int(
+            input("Which todo do you want to mark as completed? e.g: 1, 2, 3: ")
+        )
 
-            print(
-                f"The following todo has been marked as completed: {removed_todo.strip('\n')}"
-            )
+        with open("files/todos.txt", "r") as file:
+            todos = file.readlines()
 
-        case "quit":
-            break
-        case _:
-            print("Invalid action. Please try again.")
+        removed_todo = todos[completed_todo - 1]
+        todos.pop(completed_todo - 1)
+
+        with open("files/todos.txt", "w") as file:
+            file.writelines(todos)
+
+        print(
+            f"The following todo has been marked as completed: {removed_todo.strip('\n')}"
+        )
+
+    elif "quit" in user_action:
+        break
+
 print("Thanks for using the to do app!")
-
-
-# def edit_todos(todo) -> None:
-#     todo_number = int(
-#         input("Please enter the number of the todo, which you want to edit:")
-#     )
-#     todo_number = todo_number - 1
-#     new_todo = input("Enter your new todo: ")
-#     todo[todo_number] = new_todo
-#
-#
-# def main() -> None:
-#     # Initialize an empty list to hold TODO items
-#     todos: list[str] = []
-#
-#     while True:
-#         # Prompt the user for a new TODO item
-#         todo_item = input("Enter a TODO item: ").strip()
-#
-#         # Add the item if it is not empty
-#         if todo_item:
-#             todos.append(todo_item)
-#             print(f"Added: '{todo_item}'.")
-#         else:
-#             print("Empty input ignored. Please enter a valid TODO.")
-#         edit_todo = (
-#             input("Would you like to edit any of your TODOs? (y/n): ").lower().strip()
-#         )
-#         if edit_todo == "y":
-#             edit_todos(todos)
-#         elif edit_todo == "n":
-#             continue
-#         else:
-#             print("Invalid choice. Ending program.")
-#             break
-#         # Controls the users adding of more TODOs
-#         user_choice = input("Add another? (y/n): ").lower().strip()
-#
-#         # Decide whether to continue or exit
-#         if user_choice == "y":
-#             continue
-#         if user_choice == "n":
-#             break
-#
-#         print("Invalid choice. Ending program.")
-#         break
-#
-#     # Display the final list of TODOs
-#     print("\nYour TODO List")
-#     print("-" * 20)
-#     for index, todo in enumerate(todos, start=1):
-#         print(f"{index}. {todo}")
-#
-#
-# if __name__ == "__main__":
-#     main()
-# Developer Notes:
-# API JSON Token Grabs
-# Planning to Build a Lang Model

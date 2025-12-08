@@ -2,3 +2,7 @@ Study DSA using Python as main language
 Review RSA SSL
 Send out applications
 Study for Coding Challenge
+Review DSA in Udemy Course
+ml learning
+rsa
+Ml Review And Building Transformers
