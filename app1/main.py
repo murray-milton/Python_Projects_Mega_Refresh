@@ -18,8 +18,7 @@ while True:
         .lower()
     )
 
-    if "add" in user_action:
-        # todo = input("Enter a todo: ") + "\n"
+    if "add" in user_action or "new" in user_action or "create" in user_action:
         todo = user_action[4:].title() + "\n"
 
         with open("files/todos.txt", "r") as file:
@@ -51,27 +50,25 @@ while True:
             file.writelines(todos)
 
     elif "edit" in user_action:
-        edit_todos = input("Enter the todo you want to edit: e.g: 1, 2, 3: ")
+        number = int(user_action[5:])
 
         with open("files/todos.txt", "r") as file:
             todos = file.readlines()
 
         new_todo = input("Enter your new todo: ")
-        todos[int(edit_todos) - 1] = new_todo + "\n"
+        todos[int(number) - 1] = new_todo + "\n"
 
         with open("files/todos.txt", "w") as file:
             file.writelines(todos)
 
     elif "complete" in user_action:
-        completed_todo = int(
-            input("Which todo do you want to mark as completed? e.g: 1, 2, 3: ")
-        )
+        number = int(user_action[9:])
 
         with open("files/todos.txt", "r") as file:
             todos = file.readlines()
 
-        removed_todo = todos[completed_todo - 1]
-        todos.pop(completed_todo - 1)
+        removed_todo = todos[number - 1]
+        todos.pop(number - 1)
 
         with open("files/todos.txt", "w") as file:
             file.writelines(todos)
@@ -82,5 +79,8 @@ while True:
 
     elif "quit" in user_action:
         break
+
+    else:
+        print("Invalid action. Please try again.")
 
 print("Thanks for using the to do app!")
