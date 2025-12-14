@@ -11,13 +11,14 @@ Description:
 
 
 def get_todos():
-    with open("files/todos.txt", "r") as file:
-        todos = file.readlines()
-    return todos
+    with open("files/todos.txt", "r") as file_local:
+        todos_local = file_local.readlines()
+    return todos_local
 
 
 greeting = "Welcome to the to do app!"
 print(greeting.upper())
+
 while True:
     user_action = (
         input("Enter your action (add, show, delete, edit, complete  or quit): ")
