@@ -9,6 +9,13 @@ Description:
 
 """Todo CLI that enable the user to add, show, delete, edit, and quit."""
 
+
+def get_todos():
+    with open("files/todos.txt", "r") as file:
+        todos = file.readlines()
+    return todos
+
+
 greeting = "Welcome to the to do app!"
 print(greeting.upper())
 while True:
@@ -21,8 +28,7 @@ while True:
     if user_action.startswith("add"):
         todo = user_action[4:].title() + "\n"
 
-        with open("files/todos.txt", "r") as file:
-            todos = file.readlines()
+        todos = get_todos()
 
         todos.append(todo)
 
@@ -31,8 +37,7 @@ while True:
 
     elif user_action.startswith("show"):
 
-        with open("files/todos.txt", "r") as file:
-            todos = file.readlines()
+        todos = get_todos()
 
         for index, todo in enumerate(todos):
             item = todo.strip("\n")
@@ -41,8 +46,7 @@ while True:
     elif "delete" in user_action:
         delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3: ")
 
-        with open("files/todos.txt", "r") as file:
-            todos = file.readlines()
+        todos = get_todos()
 
         del todos[int(delete_todo) - 1]
 
@@ -53,8 +57,7 @@ while True:
         try:
             number = int(user_action[5:])
 
-            with open("files/todos.txt", "r") as file:
-                todos = file.readlines()
+            todos = get_todos()
 
             new_todo = input("Enter your new todo: ")
             todos[int(number) - 1] = new_todo + "\n"
@@ -69,8 +72,7 @@ while True:
         try:
             number = int(user_action[9:])
 
-            with open("files/todos.txt", "r") as file:
-                todos = file.readlines()
+            todos = get_todos()
 
             removed_todo = todos[number - 1]
             todos.pop(number - 1)
