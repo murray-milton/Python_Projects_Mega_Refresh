@@ -1,4 +1,3 @@
-tell a story
 Send out applications
 Study for Coding Challenge
 Review DSA in Udemy Course
@@ -9,3 +8,4 @@ You Know
 You Know What I Mean
 Cleanup Repo
 Review Master Branch
+Revise Devops

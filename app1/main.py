@@ -10,7 +10,7 @@ Description:
 """Todo CLI that enable the user to add, show, delete, edit, and quit."""
 
 
-def get_todos(filepath):
+def get_todos(filepath="files/todos.txt"):
     with open(filepath, "r") as file_local:
         todos_local = file_local.readlines()
     return todos_local
@@ -51,7 +51,7 @@ while True:
     elif "delete" in user_action:
         delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3: ")
 
-        todos = get_todos("files/todos.txt")
+        todos = get_todos()
 
         del todos[int(delete_todo) - 1]
 
@@ -61,7 +61,7 @@ while True:
         try:
             number = int(user_action[5:])
 
-            todos = get_todos("files/todos.txt")
+            todos = get_todos()
 
             new_todo = input("Enter your new todo: ")
             todos[int(number) - 1] = new_todo + "\n"
@@ -76,7 +76,7 @@ while True:
         try:
             number = int(user_action[9:])
 
-            todos = get_todos("todos.txt")
+            todos = get_todos()
 
             removed_todo = todos[number - 1]
             todos.pop(number - 1)
