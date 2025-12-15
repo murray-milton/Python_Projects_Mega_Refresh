@@ -10,10 +10,15 @@ Description:
 """Todo CLI that enable the user to add, show, delete, edit, and quit."""
 
 
-def get_todos():
-    with open("files/todos.txt", "r") as file_local:
+def get_todos(filepath):
+    with open(filepath, "r") as file_local:
         todos_local = file_local.readlines()
     return todos_local
+
+
+def write_todos(filepath, todos_arg):
+    with open(filepath, "w") as file:
+        file.writelines(todos_arg)
 
 
 greeting = "Welcome to the to do app!"
@@ -29,16 +34,15 @@ while True:
     if user_action.startswith("add"):
         todo = user_action[4:].title() + "\n"
 
-        todos = get_todos()
+        todos = get_todos("files/todos.txt")
 
         todos.append(todo)
 
-        with open("files/todos.txt", "w") as file:
-            file.writelines(todos)
+        write_todos("files/todos.txt", todos)
 
     elif user_action.startswith("show"):
 
-        todos = get_todos()
+        todos = get_todos("files/todos.txt")
 
         for index, todo in enumerate(todos):
             item = todo.strip("\n")
@@ -47,24 +51,23 @@ while True:
     elif "delete" in user_action:
         delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3: ")
 
-        todos = get_todos()
+        todos = get_todos("files/todos.txt")
 
         del todos[int(delete_todo) - 1]
 
-        with open("files/todos.txt", "w") as file:
-            file.writelines(todos)
+        write_todos("files/todos.txt", todos)
 
     elif user_action.startswith("edit"):
         try:
             number = int(user_action[5:])
 
-            todos = get_todos()
+            todos = get_todos("files/todos.txt")
 
             new_todo = input("Enter your new todo: ")
             todos[int(number) - 1] = new_todo + "\n"
 
-            with open("files/todos.txt", "w") as file:
-                file.writelines(todos)
+            write_todos("files/todos.txt", todos)
+
         except ValueError:
             print("Invalid number. Please try again.")
             continue
@@ -73,13 +76,12 @@ while True:
         try:
             number = int(user_action[9:])
 
-            todos = get_todos()
+            todos = get_todos("todos.txt")
 
             removed_todo = todos[number - 1]
             todos.pop(number - 1)
 
-            with open("files/todos.txt", "w") as file:
-                file.writelines(todos)
+            write_todos("files/todos.txt", todos)
 
             print(
                 f"The following todo has been marked as completed: {removed_todo.strip('\n')}"
