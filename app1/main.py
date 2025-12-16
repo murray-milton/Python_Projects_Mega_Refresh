@@ -16,7 +16,7 @@ def get_todos(filepath="files/todos.txt"):
     return todos_local
 
 
-def write_todos(filepath, todos_arg):
+def write_todos(todos_arg, filepath="files/todos.txt"):
     with open(filepath, "w") as file:
         file.writelines(todos_arg)
 
@@ -38,7 +38,7 @@ while True:
 
         todos.append(todo)
 
-        write_todos("files/todos.txt", todos)
+        write_todos(todos)
 
     elif user_action.startswith("show"):
 
@@ -55,7 +55,7 @@ while True:
 
         del todos[int(delete_todo) - 1]
 
-        write_todos("files/todos.txt", todos)
+        write_todos(todos)
 
     elif user_action.startswith("edit"):
         try:
@@ -66,7 +66,7 @@ while True:
             new_todo = input("Enter your new todo: ")
             todos[int(number) - 1] = new_todo + "\n"
 
-            write_todos("files/todos.txt", todos)
+            write_todos(todos)
 
         except ValueError:
             print("Invalid number. Please try again.")
@@ -81,7 +81,7 @@ while True:
             removed_todo = todos[number - 1]
             todos.pop(number - 1)
 
-            write_todos("files/todos.txt", todos)
+            write_todos(todos)
 
             print(
                 f"The following todo has been marked as completed: {removed_todo.strip('\n')}"
