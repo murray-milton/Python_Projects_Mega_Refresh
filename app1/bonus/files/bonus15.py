@@ -20,3 +20,23 @@ class Solution(object):
 
 
 print(Solution().twoSum([2, 7, 11, 15], 9))
+
+
+# Define a function named get_nr_items that takes one parameter: user_input
+def get_nr_items(user_input):
+    # Split the user_input string by comma and store the resulting items in the 'items' list
+    items = user_input.split(",")
+    # Return the length of the 'items' list
+    return len(items)
+
+
+def calculate_time(
+    h,
+    g=9.80665,
+):
+    t = (2 * h / g) ** 0.5
+    return t
+
+
+time = calculate_time(100)
+print(time)
