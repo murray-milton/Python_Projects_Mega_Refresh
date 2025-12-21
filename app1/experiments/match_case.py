@@ -17,7 +17,7 @@ while True:
         case "show" | "display" | "list":
             for index, todo in enumerate(todos):
                 todo = todo.title()
-                print(f"{ index + 1}.{todo}")
+                print(f"{index + 1}.{todo}")
         case "delete":
             delete_todo = input("Enter the todo you want to delete: e.g: 1, 2, 3")
             del todos[int(delete_todo) - 1]

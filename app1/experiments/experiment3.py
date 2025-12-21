@@ -1,2 +1,2 @@
-with open("../files/doc.txt" "r") as file:
+with open("../files/doc.txtr") as file:
     print(file.read())
