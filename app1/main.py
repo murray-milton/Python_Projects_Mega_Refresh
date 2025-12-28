@@ -1,7 +1,7 @@
 # from functions import get_todos, write_todos
-import functions
+import time
 
-# import datetime
+import functions
 
 """
 Purpose: Simple command-line TODO list refresher
@@ -14,9 +14,10 @@ Description:
 
 """Todo CLI that enable the user to add, show, delete, edit, and quit."""
 
-
+now = time.strftime("%b %d, %Y %H:%M:%S")
 greeting = "Welcome to the to do app!"
 print(greeting.upper())
+print(now)
 
 while True:
     user_action = (
