@@ -1,6 +1,8 @@
 # from functions import get_todos, write_todos
 import functions
 
+# import datetime
+
 """
 Purpose: Simple command-line TODO list refresher
 Description:
@@ -87,4 +89,8 @@ while True:
     else:
         print("Invalid action. Please try again.")
 
+
 print("Thanks for using the to do app!")
+
+if __name__ == "__main__":
+    print("Welcome to the to do app!")
