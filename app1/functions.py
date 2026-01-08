@@ -60,3 +60,6 @@ unsubscribed = False
 location = "USA"
 if (not unsubscribed) and (location == "USA" or location == "CAN"):
     print("send email")
+
+if __name__ == "__main__":
+    print("You are running the functions module......")
